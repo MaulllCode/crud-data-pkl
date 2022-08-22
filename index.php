@@ -29,11 +29,12 @@
             if (isset($_GET['id'])) {
                 $id = $_GET['id'];
 
-                $sql = "SELECT * FROM data WHERE id = $id";
+                $sql1 = "SELECT * FROM data WHERE id = $id";
+                $result = mysqli_query($kon, $sql1);
 
                 $gambar = "SELECT gambar FROM data WHERE id = $id";
-                $result = mysqli_query($kon, $gambar);
-                $data = mysqli_fetch_array($result);
+                $result1 = mysqli_query($kon, $gambar);
+                $data = mysqli_fetch_array($result1);
 
                 $folder = "gambar/" . $data['gambar'];
 
@@ -49,6 +50,7 @@
                     echo "<script>alert('Data gagal dihapus');window.location.href='index.php';</script>";
                 }
             }
+
             ?>
 
             <form action="hapus.php" method="POST">
@@ -99,7 +101,7 @@
                                         <a href="index.php?id=<?= $data['id'] ?>" class="btn btn-danger">Hapus</a>
                                     </td>
                                     <td>
-                                        <input type="checkbox" name="pilih[]" id="pilih[]" value="<?php echo $data['id'] ?>">
+                                        <input type="checkbox" name="pilih[]" value="<?php echo $data['id'] ?>">
                                     </td>
                                 </tr>
                             </tbody>
