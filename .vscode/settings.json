@@ -1,0 +1,5 @@
+{
+    "livePreview.portNumber": 3000,
+    "livePreview.debugOnExternalPreview": false,
+    "livePreview.hostIP": "127.0.0.1"
+}
