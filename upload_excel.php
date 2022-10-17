@@ -17,7 +17,7 @@
 </head>
 
 <body>
-    <div class="card">
+    <div class="card m-3">
         <div class="card-header">
             <h1>Form Upload Data</h1>
         </div>

@@ -17,7 +17,7 @@
 </head>
 
 <body>
-    <div class="card m-5">
+    <div class="card m-3">
         <div class="card-header">
             <h1>Form Login</h1>
         </div>
