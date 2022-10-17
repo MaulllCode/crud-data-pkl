@@ -1,7 +1,6 @@
 <?php
 $kon = mysqli_connect("localhost", "root", "", "crud-pkl");
+
 if (!$kon) {
-    echo "Koneksi gagal";
-} else {
-    echo "";
+    echo "<script>alert('Koneksi error!');window.location.href='home    .php';</script>";
 }

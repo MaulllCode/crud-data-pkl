@@ -6,28 +6,47 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Crud Import Data | Maulana adji sentosa</title>
+    <title>Crud | Form Upload Data</title>
     <link href="bootstraps/css/bootstrap.css" rel="stylesheet">
     <script src="bootstraps/js/bootstrap.bundle.min.js"></script>
     <script src="bootstraps/js/bootstrap.min.js"></script>
     <script src="bootstraps/js/jquery-3.6.0.min.js" type="text/javascript"></script>
-    <link rel="stylesheet" href="style/style.css" />
-
+    <link rel="stylesheet" href="bootstraps/style/style.css" type="text/css" />
+    <link rel="shortcut icon" href="gambar/logophp.png">
+    <script src="https://kit.fontawesome.com/d0157de78d.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
     <div class="card">
         <div class="card-header">
-            <h1>Form Import Data</h1>
+            <h1>Form Upload Data</h1>
         </div>
         <div class="card-body">
             <?php
+
+            session_start();
+
+            if (isset($_SESSION['level'])) {
+                // jika level admin
+                if ($_SESSION['level'] == "admin") {
+                }
+                // jika kondisi level user maka akan diarahkan ke halaman lain
+                else if ($_SESSION['level'] == "user") {
+                    // header('location:home.php');
+                    echo "<script>alert('hanya Admin yang dapat mengakses halaman!');window.location.href='home.php';</script>";
+                }
+            }
+
+            if (!isset($_SESSION['login'])) {
+                echo "<script>window.location.href='home.php';alert('Anda belum melakukan login!');</script>";
+            }
 
             include 'koneksi.php';
             require 'vendor/autoload.php';
 
             use PhpOffice\PhpSpreadsheet\Spreadsheet;
             use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+
 
             if (isset($_POST['save_excel_data'])) {
 
@@ -36,6 +55,7 @@
                 $file_ext = pathinfo($filename, PATHINFO_EXTENSION);
 
                 $allowed_ext = ["xls", "xlsx", "csv", "ods", "xlsx", "xlsm", "xlsb", "xltx", "xltm", "xlt", "xlm", "xlam", "xla", "xlc", "xlw", "xl", "xll"];
+
 
                 if (in_array($file_ext, $allowed_ext)) {
 
@@ -56,6 +76,8 @@
                             $kota = $row[4];
                             $jk = $row[5];
 
+                            move_uploaded_file($inputFileNamePath, 'excel/' . $filename . date('dMY His'));
+
                             $sql = "INSERT INTO data (nama, alamat, email, no, kota, jk) VALUES ('$nama', '$alamat', '$email', '$no', '$kota', '$jk')";
 
                             $result = mysqli_query($kon, $sql);
@@ -64,6 +86,7 @@
                         } else {
                             $count = 1;
                         }
+                        // unlink('excel/' . $filename);
                     }
 
                     if ($result) {
@@ -72,21 +95,27 @@
                         echo "<script>alert('Data gagal diupload !');window.location.href='index.php';</script>";
                     }
                 } else {
-                    echo "<script>alert('Pastikan menggunakan File Excel !');window.location.href='index.php';</script>";
+                    echo "<script>alert('Pastikan menggunakan File Excel !');window.location.href='upload_excel.php';</script>";
                 }
             }
+
+
             ?>
 
             <form method="POST" action="" enctype="multipart/form-data">
                 <div class="form-group">
                     <label>Masukan File Excel</label>
-                    <input type="file" name="import_file" class="form-control" required>
+                    <input type="file" name="import_file" class="form-control" required oninvalid="this.setCustomValidity('Pastikan menggunakan File Excel !')" oninput="setCustomValidity('')">
                     <p style="color: red">Pastikan menggunakan File Excel !</p>
                     <hr>
-                    <button type="submit" name="save_excel_data" class="btn btn-primary">Import</button>
-                    <a class="btn btn-success" href="index.php" role="button">Kembali</a>
+                    <button type="submit" name="save_excel_data" class="btn btn-primary"><i class="fa-solid fa-file-arrow-up"></i> Upload</button>
+                    <a class="btn btn-info" href="excel/template.xls" role="button"><i class="fa-solid fa-file-arrow-down"></i> Download template</a>
+                    <a class="btn btn-success" href="index.php" role="button"><i class="fa-solid fa-backward-step"></i> Kembali</a>
                 </div>
             </form>
+        </div>
+        <div class="card-footer">
+            <small>copyright © 2022 - <strong>maulana</strong></small>
         </div>
     </div>
 </body>

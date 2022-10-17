@@ -6,25 +6,62 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Crud | Maulana adji sentosa</title>
+    <title>Crud | Form Crud Data</title>
     <link href="bootstraps/css/bootstrap.css" rel="stylesheet">
     <script src="bootstraps/js/bootstrap.bundle.min.js"></script>
     <script src="bootstraps/js/bootstrap.min.js"></script>
     <script src="bootstraps/js/jquery-3.6.0.min.js" type="text/javascript"></script>
-    <link rel="stylesheet" href="style/style.css" />
-
+    <link rel="stylesheet" href="bootstraps/style/style.css" type="text/css" />
+    <link rel="shortcut icon" href="gambar/logophp.png">
+    <script src="https://kit.fontawesome.com/d0157de78d.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
+
     <div class="card">
         <div class="card-header">
-            <h1>Form Crud Data</h1>
+            <div class="row">
+                <div class="col d-flex">
+                    <h1>Form Crud Data</h1>
+                </div>
+                <div class="col d-flex align-items-center justify-content-end">
+                    <?php
+                    session_start();
+                    if (!isset($_SESSION['login'])) {
+                    ?>
+                        <a class="btn btn-primary" href="login.php">Masuk</a>
+                        <a class="d-none btn btn-danger" href="logout.php">Keluar</a>
+                    <?php
+                    } else {
+                    ?>
+                        <a class="d-none btn btn-primary" href="login.php">Masuk</a>
+                        <a class="btn btn-danger" href="logout.php"><i class="fa-solid fa-right-from-bracket"></i> Keluar</a>
+                    <?php
+                    }
+                    ?>
+                </div>
+            </div>
         </div>
+
         <div class="card-body">
 
             <?php
-
             include 'koneksi.php';
+
+            if (isset($_SESSION['level'])) {
+                // jika level admin
+                if ($_SESSION['level'] == "admin") {
+                }
+                // jika kondisi level user maka akan diarahkan ke halaman lain
+                else if ($_SESSION['level'] == "user") {
+                    header('location:home.php');
+                    // echo "<script>alert('Anda tidak dapat mengakses halaman');window.location.href='home.php';</script>";
+                }
+            }
+
+            if (!isset($_SESSION['login'])) {
+                echo "<script>window.location.href='home.php';</script>";
+            }
 
             if (isset($_GET['id'])) {
                 $id = $_GET['id'];
@@ -55,8 +92,8 @@
 
             <form action="hapus.php" method="POST">
                 <div class="table-responsive text-center">
-                    <table class="table table-bordered table-striped table-hover">
-                        <thead class="table-dark">
+                    <table class="table table-bordered align-middle">
+                        <thead>
                             <tr>
                                 <th scope="col">No</th>
                                 <th scope="col">Nama</th>
@@ -75,20 +112,24 @@
 
                         include "koneksi.php";
 
-                        $sql = "SELECT * FROM data id";
+                        $page = (isset($_GET['page'])) ? (int) $_GET['page'] : 1;
 
-                        $result = mysqli_query($kon, $sql);
+                        $limit = 10;
 
-                        $i = 0;
+                        $limitStart = ($page - 1) * $limit;
 
-                        while ($data = mysqli_fetch_array($result)) {
+                        $SqlQuery = mysqli_query($kon, "SELECT * FROM data LIMIT " . $limitStart . "," . $limit);
+
+                        $i = $limitStart + 0;
+
+                        while ($data = mysqli_fetch_array($SqlQuery)) {
 
                             $i++;
 
                         ?>
-                            <tbody class="table-group-divider">
+                            <tbody class="table-group-divider text-capitalize bg-white">
                                 <tr>
-                                    <td><?php echo $i; ?></td>
+                                    <th><?php echo $i; ?></th>
                                     <td><?php echo $data['nama']; ?></td>
                                     <td><?php echo $data['alamat']; ?></td>
                                     <td><?php echo $data['email']; ?></td>
@@ -97,8 +138,8 @@
                                     <td><?php echo $data['jk']; ?></td>
                                     <td> <img src="gambar/<?php echo $data['gambar'] ?>" width='100px' height='100px'></td>
                                     <td>
-                                        <a href="ubah.php?id=<?= $data['id'] ?>" class="btn btn-warning">Edit</a>
-                                        <a href="index.php?id=<?= $data['id'] ?>" class="btn btn-danger">Hapus</a>
+                                        <a href="ubah.php?id=<?= $data['id'] ?>" class="btn btn-warning"><i class="fa-solid fa-pencil"></i> Ubah</a>
+                                        <a href="index.php?id=<?= $data['id'] ?>" class="btn btn-danger"><i class="fa fa-trash"></i> Hapus</a>
                                     </td>
                                     <td>
                                         <input type="checkbox" name="pilih[]" value="<?php echo $data['id'] ?>">
@@ -111,10 +152,77 @@
                     </table>
                     <hr>
                 </div>
-                <a class="btn btn-primary" href="tambah.php" role="button">Tambah Data Baru</a>
-                <a href="upload_excel.php" class="btn btn-info">Import Data</a>
-                <button type="submit" name="hapus" class="btn btn-danger">Hapus Data</button>
+                <div class="row">
+                    <div class="col justify-content-start">
+                        <a class="btn btn-primary" href="tambah.php"><i class="fa-solid fa-circle-plus"></i> Tambah Data</a>
+                        <a href="upload_excel.php" class="btn btn-info"><i class="fa fa-file-arrow-up"></i> Upload Data</a>
+                        <button type="submit" name="hapus" class="btn btn-danger"><i class="fa fa-trash"></i> Hapus Data</button>
+                    </div>
+
+                    <nav class="col d-flex justify-content-end">
+                        <ul class="pagination">
+                            <?php
+                            // Jika page = 1, maka previous disable
+                            if ($page <= 1) {
+                            ?>
+                                <!-- link Previous Page disable -->
+                                <li class="disabled"><a class="page-link" href="#">Previous</a></li>
+                            <?php
+                            } else {
+                                $previous = ($page > 1) ? $page - 1 : 1;
+                            ?>
+                                <!-- link Previous Page -->
+                                <li><a class="page-link" href="index.php?page=<?php echo $previous; ?>">Previous</a></li>
+                            <?php
+                            }
+                            ?>
+
+                            <?php
+                            $SqlQuery = mysqli_query($kon, "SELECT * FROM data");
+
+                            //Hitung semua jumlah data yang berada pada tabel Sisawa
+                            $JumlahData = mysqli_num_rows($SqlQuery);
+
+                            // Hitung jumlah halaman yang tersedia
+                            $jumlahPage = ceil($JumlahData / $limit);
+
+                            // Jumlah link number 
+                            $jumlahNumber = 2;
+
+                            // Untuk awal link number
+                            $startNumber = ($page > $jumlahNumber) ? $page - $jumlahNumber : 1;
+
+                            // Untuk akhir link number
+                            $endNumber = ($page < ($jumlahPage - $jumlahNumber)) ? $page + $jumlahNumber : $jumlahPage;
+
+                            for ($i = $startNumber; $i <= $endNumber; $i++) {
+                                $linkActive = ($page == $i) ? ' class="active"' : '';
+                            ?>
+                                <li<?php echo $linkActive; ?>><a class="page-link" href="index.php?page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+                                <?php
+                            }
+                                ?>
+
+                                <!-- link Next Page -->
+                                <?php
+                                if ($page >= $jumlahPage) {
+                                ?>
+                                    <li class="disabled"><a class="page-link" href="#">Next</a></li>
+                                <?php
+                                } else {
+                                    $next = ($page < $jumlahPage) ? $page + 1 : $jumlahPage;
+                                ?>
+                                    <li><a class="page-link" href="index.php?page=<?php echo $next; ?>">Next</a></li>
+                                <?php
+                                }
+                                ?>
+                        </ul>
+                    </nav>
+                </div>
             </form>
+        </div>
+        <div class="card-footer">
+            <small>copyright © 2022 - <strong>maulana</strong></small>
         </div>
     </div>
 </body>
@@ -122,7 +230,7 @@
 </html>
 
 <!-- <script>
-    function myFunction() {
+    function darkmode() {
         var element = document.body;
         element.classList.toggle("dark-mode");
     }

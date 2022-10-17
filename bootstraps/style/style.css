@@ -1,0 +1,23 @@
+
+.dark-mode {
+  background-color: black;
+  color: white;
+}
+
+body {
+  padding: 5px;
+  background-color: white;
+}
+
+.card-header {
+  text-align: center;
+  align-items: center;
+}
+
+.card-body {
+}
+
+.card-footer {
+  text-transform: capitalize;
+  text-align: center;
+}
