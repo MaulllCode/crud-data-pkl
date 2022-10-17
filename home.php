@@ -33,12 +33,10 @@
                         <div>
                             <a class="btn btn-primary" href="login.php"><i class="fa-solid fa-right-to-bracket"></i> Masuk</a>
                             <a class="btn btn-outline-primary" href="register.php"><i class="fa-solid fa-user-pen"></i> Daftar</a>
-                            <a class="d-none btn btn-danger" href="logout.php">Keluar</a>
                         </div>
                     <?php
                     } else {
                     ?>
-                        <a class="d-none btn btn-primary" href="login.php">Masuk</a>
                         <a class="btn btn-danger" href="logout.php"><i class="fa-solid fa-right-from-bracket"></i> Keluar</a>
                     <?php
                     }
@@ -93,8 +91,6 @@
                                 <th scope="col">Kota</th>
                                 <th scope="col">Jenis Kelamin</th>
                                 <th scope="col">Foto</th>
-                                <!-- <th scope="col">Aksi</th>
-                                <th scope="col">Pilih</th> -->
                             </tr>
                         </thead>
 
