@@ -17,7 +17,7 @@
 </head>
 
 <body>
-    <div class="card m-3">
+    <div class="card">
         <div class="card-header">
             <h1>Form Registrasi</h1>
         </div>

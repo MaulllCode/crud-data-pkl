@@ -6,6 +6,13 @@
 
 body {
   padding: 5px;
+	/* background-image: url('../../gambar/nia-kuil.jpg'); */
+  background-color: wheat;
+  background-size: cover;
+  margin: 20px;
+}
+
+.card {
   background-color: white;
 }
 
