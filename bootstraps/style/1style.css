@@ -4,27 +4,27 @@
   color: white;
 }
 
-body {
-  padding: 5px;
+/* body { */
+  /* padding: 5px; */
 	/* background-image: url('../../gambar/nia-kuil.jpg'); */
-  background-color: wheat;
+  /* background-color: wheat;
   background-size: cover;
   margin: 20px;
-}
+} */
 
-.card {
+/* .card {
   background-color: white;
-}
+} */
 
-.card-header {
+/* .card-header {
   text-align: center;
   align-items: center;
-}
-
+} */
+/* 
 .card-body {
-}
+} */
 
-.card-footer {
+/* .card-footer {
   text-transform: capitalize;
   text-align: center;
-}
+} */

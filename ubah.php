@@ -11,215 +11,230 @@
     <script src="bootstraps/js/bootstrap.bundle.min.js"></script>
     <script src="bootstraps/js/bootstrap.min.js"></script>
     <script src="bootstraps/js/jquery-3.6.0.min.js" type="text/javascript"></script>
-    <link rel="stylesheet" href="bootstraps/style/style.css" type="text/css" />
+    <!-- <link rel="stylesheet" href="bootstraps/style/style.css" type="text/css" /> -->
     <link rel="shortcut icon" href="gambar/logophp.png">
+    <!-- <meta http-equiv="refresh" content="10" /> -->
     <script src="https://kit.fontawesome.com/d0157de78d.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <div class="card">
-        <div class="card-header">
+
+    <div id="head" class="text-bg-dark p-3">
+        <div class="text-center">
             <h1>Form Ubah Data</h1>
         </div>
-        <div class="card-body">
+    </div>
 
-            <?php
+    <div id="body" class="container p-3">
 
-            include 'koneksi.php';
+        <?php
 
-            session_start();
+        include 'koneksi.php';
 
-            if (isset($_SESSION['level'])) {
-                // jika level admin
-                if ($_SESSION['level'] == "admin") {
-                }
-                // jika kondisi level user maka akan diarahkan ke halaman lain
-                else if ($_SESSION['level'] == "user") {
-                    // header('location:home.php');
-                    echo "<script>alert('hanya Admin yang dapat mengakses halaman!');window.location.href='home.php';</script>";
-                }
+        session_start();
+
+        if (isset($_SESSION['level'])) {
+            // jika level admin
+            if ($_SESSION['level'] == "admin") {
             }
-
-            if (!isset($_SESSION['login'])) {
-                echo "<script>window.location.href='home.php';alert('Anda belum melakukan login!');</script>";
+            // jika kondisi level user maka akan diarahkan ke halaman lain
+            else if ($_SESSION['level'] == "user") {
+                // header('location:home.php');
+                echo "<script>alert('hanya Admin yang dapat mengakses halaman!');window.location.href='home.php';</script>";
             }
+        }
 
-            $array_kota = array(
-                'Kabupaten Bangkalan',
-                'Kabupaten Banyuwangi',
-                'Kabupaten Blitar',
-                'Kabupaten Bojonegoro',
-                'Kabupaten Bondowoso',
-                'Kabupaten Gresik',
-                'Kabupaten Jember',
-                'Kabupaten Jombang',
-                'Kabupaten Kediri',
-                'Kabupaten Lamongan',
-                'Kabupaten Lumajang',
-                'Kabupaten Madiun',
-                'Kabupaten Magetan',
-                'Kabupaten Malang',
-                'Kabupaten Mojokerto',
-                'Kabupaten Nganjuk',
-                'Kabupaten Ngawi',
-                'Kabupaten Pacitan',
-                'Kabupaten Pamekasan',
-                'Kabupaten Pasuruan',
-                'Kabupaten Ponorogo',
-                'Kabupaten Probolinggo',
-                'Kabupaten Sampang',
-                'Kabupaten Sidoarjo',
-                'Kabupaten Situbondo',
-                'Kabupaten Sumenep',
-                'Kabupaten Trenggalek',
-                'Kabupaten Tuban',
-                'Kabupaten Tulungagung',
-                'Kota Batu',
-                'Kota Blitar',
-                'Kota Kediri',
-                'Kota Madiun',
-                'Kota Malang',
-                'Kota Mojokerto',
-                'Kota Pasuruan',
-                'Kota Probolinggo',
-                'Kota Surabaya',
-            );
+        if (!isset($_SESSION['login'])) {
+            echo "<script>window.location.href='home.php';alert('Anda belum melakukan login!');</script>";
+        }
 
-            if (isset($_GET['id'])) {
-                $id = $_GET['id'];
+        $array_kota = array(
+            'Kabupaten Bangkalan',
+            'Kabupaten Banyuwangi',
+            'Kabupaten Blitar',
+            'Kabupaten Bojonegoro',
+            'Kabupaten Bondowoso',
+            'Kabupaten Gresik',
+            'Kabupaten Jember',
+            'Kabupaten Jombang',
+            'Kabupaten Kediri',
+            'Kabupaten Lamongan',
+            'Kabupaten Lumajang',
+            'Kabupaten Madiun',
+            'Kabupaten Magetan',
+            'Kabupaten Malang',
+            'Kabupaten Mojokerto',
+            'Kabupaten Nganjuk',
+            'Kabupaten Ngawi',
+            'Kabupaten Pacitan',
+            'Kabupaten Pamekasan',
+            'Kabupaten Pasuruan',
+            'Kabupaten Ponorogo',
+            'Kabupaten Probolinggo',
+            'Kabupaten Sampang',
+            'Kabupaten Sidoarjo',
+            'Kabupaten Situbondo',
+            'Kabupaten Sumenep',
+            'Kabupaten Trenggalek',
+            'Kabupaten Tuban',
+            'Kabupaten Tulungagung',
+            'Kota Batu',
+            'Kota Blitar',
+            'Kota Kediri',
+            'Kota Madiun',
+            'Kota Malang',
+            'Kota Mojokerto',
+            'Kota Pasuruan',
+            'Kota Probolinggo',
+            'Kota Surabaya',
+        );
 
-                $sql = "SELECT * FROM data WHERE id = $id";
-                $result = mysqli_query($kon, $sql);
-                $data = mysqli_fetch_array($result);
-            }
+        if (isset($_GET['id'])) {
+            $id = $_GET['id'];
 
-            if (isset($_POST['ubah_data'])) {
+            $sql = "SELECT * FROM data WHERE id = $id";
+            $result = mysqli_query($kon, $sql);
+            $data = mysqli_fetch_array($result);
+        }
 
-                $nama = $_POST['nama'];
-                $alamat = $_POST['alamat'];
-                $email = $_POST['email'];
-                $no = $_POST['no'];
-                $kota = $_POST['kota'];
-                $jk = $_POST['jk'];
+        if (isset($_POST['ubah_data'])) {
 
-                $namafile = $_FILES['file_gambar']['name'];
-                $tipe_file =  array('png', 'jpg', 'jpeg', 'gif', '');
-                $tmp = $_FILES['file_gambar']['tmp_name'];
-                $date = date('dMY His');
-                $new = $date . '-' . $namafile;
+            $nama = $_POST['nama'];
+            $alamat = $_POST['alamat'];
+            $email = $_POST['email'];
+            $no = $_POST['no'];
+            $kota = $_POST['kota'];
+            $jk = $_POST['jk'];
 
-                $xp = explode('.', $namafile);
-                $ekstensi = strtolower(end($xp));
+            $namafile = $_FILES['file_gambar']['name'];
+            $tipe_file =  array('png', 'jpg', 'jpeg', 'gif', '');
+            $tmp = $_FILES['file_gambar']['tmp_name'];
+            $date = date('dMY His');
+            $new = $date . '-' . $namafile;
 
-                if ($namafile != "") {
+            $xp = explode('.', $namafile);
+            $ekstensi = strtolower(end($xp));
 
-                    if (in_array($ekstensi, $tipe_file)) {
+            if ($namafile != "") {
 
-                        $get = "SELECT gambar FROM data WHERE id = '$id'";
-                        $data = mysqli_query($kon, $get);
-                        $lama = mysqli_fetch_array($data);
+                if (in_array($ekstensi, $tipe_file)) {
 
-                        unlink("gambar/" . $lama['gambar']);
+                    $get = "SELECT gambar FROM data WHERE id = '$id'";
+                    $data = mysqli_query($kon, $get);
+                    $lama = mysqli_fetch_array($data);
 
-                        move_uploaded_file($tmp, 'gambar/' . $new);
+                    unlink("gambar/" . $lama['gambar']);
 
-                        $sql = "UPDATE data SET nama = '$nama', alamat = '$alamat', email = '$email', no = '$no', kota = '$kota', jk = '$jk', gambar = '$new' WHERE id = $id";
+                    move_uploaded_file($tmp, 'gambar/' . $new);
 
-                        $result = mysqli_query($kon, $sql);
+                    $sql = "UPDATE data SET nama = '$nama', alamat = '$alamat', email = '$email', no = '$no', kota = '$kota', jk = '$jk', gambar = '$new' WHERE id = $id";
 
-                        if ($result) {
-                            echo "<script>alert('Data berhasil diubah');window.location.href='index.php';</script>";
-                        } else {
-                            echo "<script>alert('Data gagal diubah');window.location.href='index.php';</script>";
-                        }
-                    } else {
-                        echo "<script>
-                    alert('Pastikan menggunakan File Foto !');
-                    window.location.href = 'index.php';
-                    </script>";
-                    }
-                } else {
-                    $sql2 = "UPDATE data SET nama = '$nama', alamat = '$alamat', email = '$email', no = '$no', kota = '$kota', jk = '$jk' WHERE id = $id";
-
-                    $result = mysqli_query($kon, $sql2);
+                    $result = mysqli_query($kon, $sql);
 
                     if ($result) {
                         echo "<script>alert('Data berhasil diubah');window.location.href='index.php';</script>";
                     } else {
                         echo "<script>alert('Data gagal diubah');window.location.href='index.php';</script>";
                     }
+                } else {
+                    echo "<script>
+        alert('Pastikan menggunakan File Foto !');
+        window.location.href = 'index.php';
+        </script>";
+                }
+            } else {
+                $sql2 = "UPDATE data SET nama = '$nama', alamat = '$alamat', email = '$email', no = '$no', kota = '$kota', jk = '$jk' WHERE id = $id";
+
+                $result = mysqli_query($kon, $sql2);
+
+                if ($result) {
+                    echo "<script>alert('Data berhasil diubah');window.location.href='index.php';</script>";
+                } else {
+                    echo "<script>alert('Data gagal diubah');window.location.href='index.php';</script>";
                 }
             }
+        }
 
-            ?>
+        ?>
 
-            <form action="" method="post" class="form-floating" enctype="multipart/form-data">
-                <div class="mb-3">
-                    <label>Nama</label>
-                    <input type="text" value="<?php echo htmlspecialchars($data['nama'], ENT_QUOTES); ?>" class="form-control" name="nama" placeholder="Nama lengkap" required pattern="[a-zA-Z\s]{1,50}" oninvalid="this.setCustomValidity('Masukan Nama lengkap dengan benar')" oninput="setCustomValidity('')">
-                </div>
-                <div class="mb-3">
-                    <label>Alamat</label>
-                    <input type="text" value="<?php echo htmlspecialchars($data['alamat'], ENT_QUOTES); ?>" class="form-control" name="alamat" placeholder="Alamat domisili" required pattern="[a-zA-Z0-9\s]{1,50}" oninvalid="this.setCustomValidity('Masukan Alamat domisili dengan benar')" oninput="setCustomValidity('')">
-                </div>
-                <div class="mb-3">
-                    <label>Email</label>
-                    <input type="email" value=" <?php echo htmlspecialchars($data['email'], ENT_QUOTES); ?>" class="form-control" name="email" placeholder="Email@gmail.com" required pattern="[A-z0-9._%+-]+@[gmail]+\.[com]{2,4}$" oninvalid="this.setCustomValidity('Masukan Alamat email dengan benar')" oninput="setCustomValidity('')">
-                </div>
-                <div class="mb-3">
-                    <label>No Telp</label>
-                    <input type="tel" pattern="\d{10,15}" value="<?php echo htmlspecialchars($data['no'], ENT_QUOTES); ?>" class="form-control" name="no" placeholder="08XXXXXXXXXX" required oninvalid="this.setCustomValidity('Masukan No telp dengan benar')" oninput="setCustomValidity('')">
-                </div>
-                <div class="mb-3">
-                    <label>Kota</label>
-                    <select class="form-select" name="kota" required oninvalid="this.setCustomValidity('Pilih Kota dengan benar')" oninput="setCustomValidity('')">
-                        <option value="<?php echo htmlspecialchars($data['kota'], ENT_QUOTES); ?>">-- Pilihan Kota --</option>
-                        <?php
-                        foreach ($array_kota as $kota) {
-                            if ($data['kota'] == $kota) {
-                                echo "<option value='$kota' selected>$kota</option>";
-                            } else {
-                                echo "<option value='$kota'>$kota</option>";
-                            }
+        <form action="" method="post" class="form-floating" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label>Nama</label>
+                <input type="text" value="<?php echo htmlspecialchars($data['nama'], ENT_QUOTES); ?>" class="form-control" name="nama" placeholder="Nama lengkap" required pattern="[a-zA-Z\s]{1,50}" oninvalid="this.setCustomValidity('Masukan Nama lengkap dengan benar')" oninput="setCustomValidity('')">
+            </div>
+            <div class="mb-3">
+                <label>Alamat</label>
+                <input type="text" value="<?php echo htmlspecialchars($data['alamat'], ENT_QUOTES); ?>" class="form-control" name="alamat" placeholder="Alamat domisili" required pattern="[a-zA-Z0-9\s]{1,50}" oninvalid="this.setCustomValidity('Masukan Alamat domisili dengan benar')" oninput="setCustomValidity('')">
+            </div>
+            <div class="mb-3">
+                <label>Email</label>
+                <input type="email" value=" <?php echo htmlspecialchars($data['email'], ENT_QUOTES); ?>" class="form-control" name="email" placeholder="Email@gmail.com" required pattern="[A-z0-9._%+-]+@[gmail]+\.[com]{2,4}$" oninvalid="this.setCustomValidity('Masukan Alamat email dengan benar')" oninput="setCustomValidity('')">
+            </div>
+            <div class="mb-3">
+                <label>No Telp</label>
+                <input type="tel" pattern="\d{10,15}" value="<?php echo htmlspecialchars($data['no'], ENT_QUOTES); ?>" class="form-control" name="no" placeholder="08XXXXXXXXXX" required oninvalid="this.setCustomValidity('Masukan No telp dengan benar')" oninput="setCustomValidity('')">
+            </div>
+            <div class="mb-3">
+                <label>Kota</label>
+                <select class="form-select" name="kota" required oninvalid="this.setCustomValidity('Pilih Kota dengan benar')" oninput="setCustomValidity('')">
+                    <option value="<?php echo htmlspecialchars($data['kota'], ENT_QUOTES); ?>">-- Pilihan Kota --</option>
+                    <?php
+                    foreach ($array_kota as $kota) {
+                        if ($data['kota'] == $kota) {
+                            echo "<option value='$kota' selected>$kota</option>";
+                        } else {
+                            echo "<option value='$kota'>$kota</option>";
                         }
-                        ?>
-                    </select>
-                </div>
-                <div class=" mb-3">
-                    <label>Jenis Kelamin</label>
-                    <select class="form-select" name="jk" required oninvalid="this.setCustomValidity('Pilih Jenis kelamin dengan benar')" oninput="setCustomValidity('')">
-                        <option value="<?php echo htmlspecialchars($data['jk'], ENT_QUOTES); ?>">-- Pilihan Jenis Kelamin --</option>
-                        <?php
-                        $array_jk = array('laki-laki', 'perempuan');
-                        foreach ($array_jk as $jk) {
-                            if ($data['jk'] == $jk) {
-                                echo "<option value='$jk' selected>$jk</option>";
-                            } else {
-                                echo "<option value='$jk'>$jk</option>";
-                            }
+                    }
+                    ?>
+                </select>
+            </div>
+            <div class=" mb-3">
+                <label>Jenis Kelamin</label>
+                <select class="form-select" name="jk" required oninvalid="this.setCustomValidity('Pilih Jenis kelamin dengan benar')" oninput="setCustomValidity('')">
+                    <option value="<?php echo htmlspecialchars($data['jk'], ENT_QUOTES); ?>">-- Pilihan Jenis Kelamin --</option>
+                    <?php
+                    $array_jk = array('laki-laki', 'perempuan');
+                    foreach ($array_jk as $jk) {
+                        if ($data['jk'] == $jk) {
+                            echo "<option value='$jk' selected>$jk</option>";
+                        } else {
+                            echo "<option value='$jk'>$jk</option>";
                         }
-                        ?>
-                    </select>
-                </div>
-                <div class=" mb-3">
-                    <label>Foto</label> <br>
-                    <img src="gambar/<?php echo htmlentities($data['gambar'], ENT_QUOTES); ?>" width="100px" height="100px"> <br> <br>
-                    <input class="form-control" type="file" name="file_gambar" />
-                    <p style="color: red">Pastikan menggunakan File Foto</p>
-                </div>
-                <hr>
-                <input type="hidden" name="id" value="<?php echo $data['id']; ?>">
-                <button type="submit" name="ubah_data" class="btn btn-primary"><i class="fa-solid fa-pencil"></i> Ubah Data</button>
-                <a class="btn btn-success" href="index.php" role="button"><i class="fa-solid fa-backward-step"></i> Kembali</a>
-            </form>
-
-        </div>
-
-        <div class="card-footer">
-            <small>copyright © 2022 - <strong>maulana</strong></small>
-        </div>
-
+                    }
+                    ?>
+                </select>
+            </div>
+            <div class=" mb-3">
+                <label>Foto</label> <br>
+                <img src="gambar/<?php echo htmlentities($data['gambar'], ENT_QUOTES); ?>" width="100px" height="100px"> <br> <br>
+                <input class="form-control" type="file" name="file_gambar" />
+                <p style="color: red">Pastikan menggunakan File Foto</p>
+            </div>
+            <hr>
+            <input type="hidden" name="id" value="<?php echo $data['id']; ?>">
+            <button type="submit" name="ubah_data" class="btn btn-primary"><i class="fa-solid fa-pencil"></i> Ubah Data</button>
+            <a class="btn btn-success" href="index.php" role="button"><i class="fa-solid fa-backward-step"></i> Kembali</a>
+        </form>
     </div>
+
+    <div id="footer" class="text-bg-dark p-3">
+        <div class="text-center">
+            <small>&copy; 2022 - <strong>maulana adji sentosa</strong></small>
+        </div>
+        <!-- <div class="row">
+            <div class="col justify-content-start">
+                <small>© 2022 - <strong>maulana adji sentosa</strong></small>
+            </div>
+            <div class="col d-flex align-items-center justify-content-end">
+                <a href="#" target="_blank"><i class="fa-brands fa-telegram"></i></a>
+                <a href="#" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+                <a href="#" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
+        </div> -->
+    </div>
+
 </body>
 
 </html>
