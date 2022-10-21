@@ -1,0 +1,17 @@
+
+.dark-mode {
+  background-color: black;
+  color: white;
+}
+
+#head { 
+  padding: 15px;
+}
+
+#body {
+  padding: 25px;
+}
+
+#footer {
+  padding: 25px;
+}

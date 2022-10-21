@@ -11,7 +11,7 @@
     <script src="bootstraps/js/bootstrap.bundle.min.js"></script>
     <script src="bootstraps/js/bootstrap.min.js"></script>
     <script src="bootstraps/js/jquery-3.6.0.min.js" type="text/javascript"></script>
-    <!-- <link rel="stylesheet" href="bootstraps/style/style.css" type="text/css" /> -->
+    <link rel="stylesheet" href="bootstraps/style/style.css" type="text/css" />
     <link rel="shortcut icon" href="gambar/logophp.png">
     <!-- <meta http-equiv="refresh" content="10" /> -->
     <script src="https://kit.fontawesome.com/d0157de78d.js" crossorigin="anonymous"></script>
@@ -19,13 +19,13 @@
 
 <body>
 
-    <div id="head" class="text-bg-dark p-3">
+    <div id="head" class="text-bg-dark">
         <div class="text-center">
             <h1>Form Register</h1>
         </div>
     </div>
 
-    <div id="body" class="container p-3">
+    <div id="body" class="container">
 
         <?php
 
@@ -99,7 +99,7 @@
         </form>
     </div>
 
-    <div id="footer" class="text-bg-dark p-3">
+    <div id="footer" class="text-bg-dark">
         <div class="text-center">
             <small>&copy; 2022 - <strong>maulana adji sentosa</strong></small>
         </div>
