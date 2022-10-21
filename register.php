@@ -76,7 +76,7 @@
                     </div>
                     <div class="mb-3">
                         <label>Password</label>
-                        <input type="password" class="form-control" name="password" placeholder="Password" required oninvalid="this.setCustomValidity('Masukan Password dengan benar')" oninput="setCustomValidity('')">
+                        <input type="password" class="form-control" name="password" placeholder="Password" required oninvalid="this.setCustomValidity('Masukan Password dengan benar')" oninput="setCustomValidity('')" min="10">
                     </div>
                     <div class="mb-3">
                         <label>Komfirmasi Password</label>

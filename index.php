@@ -39,6 +39,7 @@
                     <?php
                     }
                     ?>
+                    </details>
                 </div>
             </div>
         </div>
@@ -139,7 +140,7 @@
                                     <td> <img src="gambar/<?php echo $data['gambar'] ?>" width='100px' height='100px'></td>
                                     <td>
                                         <a href="ubah.php?id=<?= $data['id'] ?>" class="btn btn-warning"><i class="fa-solid fa-pencil"></i> Ubah</a>
-                                        <a href="index.php?id=<?= $data['id'] ?>" class="btn btn-danger"><i class="fa fa-trash"></i> Hapus</a>
+                                        <a href="index.php?id=<?= $data['id'] ?>" class="btn btn-danger" onclick="return confirm('Yakin menghapus data?')"><i class="fa fa-trash"></i> Hapus</a>
                                     </td>
                                     <td>
                                         <input type="checkbox" name="pilih[]" value="<?php echo $data['id'] ?>">
@@ -155,11 +156,11 @@
                 <div class="row">
                     <div class="col justify-content-start">
                         <a class="btn btn-primary" href="tambah.php"><i class="fa-solid fa-circle-plus"></i> Tambah Data</a>
-                        <a href="upload_excel.php" class="btn btn-info"><i class="fa fa-file-arrow-up"></i> Upload Data</a>
-                        <button type="submit" name="hapus" class="btn btn-danger"><i class="fa fa-trash"></i> Hapus Data</button>
+                        <a href="upload-excel.php" class="btn btn-info"><i class="fa fa-file-arrow-up"></i> Upload Data</a>
+                        <button type="submit" name="hapus" class="btn btn-danger" onclick="return confirm('Yakin menghapus data?')"><i class="fa fa-trash"></i> Hapus Data</button>
                     </div>
 
-                    <nav class="col d-flex justify-content-end">
+                    <nav class=" col d-flex justify-content-end">
                         <ul class="pagination">
                             <?php
                             // Jika page = 1, maka previous disable

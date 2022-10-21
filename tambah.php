@@ -153,7 +153,7 @@
                 <div class="control-group after-add-more">
                     <div class="mb-3">
                         <label>Nama</label>
-                        <input type="text" class="form-control" name="nama[]" placeholder="Nama lengkap" required pattern="[a-zA-Z\s]{1,50}" oninvalid="this.setCustomValidity('Masukan Nama lengkap dengan benar')" oninput="setCustomValidity('')">
+                        <input type="text" class="form-control" name="nama[]" placeholder="Nama lengkap" pattern="[a-zA-Z\s]{1,50}" oninvalid="this.setCustomValidity('Masukan Nama lengkap dengan benar')" oninput="setCustomValidity('')" required>
                     </div>
                     <div class="mb-3">
                         <label>Alamat</label>

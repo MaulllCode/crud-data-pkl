@@ -141,7 +141,7 @@
                 <div class="row">
                     <div class="d-none col justify-content-start">
                         <a class="btn btn-primary" href="tambah.php">Tambah Data</a>
-                        <a href="upload_excel.php" class="btn btn-info">Import Data</a>
+                        <a href="upload-excel.php" class="btn btn-info">Import Data</a>
                         <button type="submit" name="hapus" class="btn btn-danger">Hapus Data</button>
                     </div>
 
