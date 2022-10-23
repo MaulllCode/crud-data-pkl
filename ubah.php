@@ -222,17 +222,6 @@
         <div class="text-center">
             <small>&copy; 2022 - <strong>maulana adji sentosa</strong></small>
         </div>
-        <!-- <div class="row">
-            <div class="col justify-content-start">
-                <small>© 2022 - <strong>maulana adji sentosa</strong></small>
-            </div>
-            <div class="col d-flex align-items-center justify-content-end">
-                <a href="#" target="_blank"><i class="fa-brands fa-telegram"></i></a>
-                <a href="#" target="_blank"><i class="fa-brands fa-twitter"></i></a>
-                <a href="#" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-                <a href="#" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
-            </div>
-        </div> -->
     </div>
 
 </body>
