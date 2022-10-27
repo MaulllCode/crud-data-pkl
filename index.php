@@ -84,6 +84,18 @@
 
         ?>
 
+        <form class="container d-flex mb-3" role="search">
+            <input class="form-control me-2" name="cari" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-success" type="submit">Search</button>
+        </form>
+
+        <?php
+        if (isset($_GET['cari'])) {
+            $cari = $_GET['cari'];
+            echo "<b>Hasil pencarian : " . $cari . "</b><br><br>";
+        }
+        ?>
+
         <form action="hapus.php" method="POST">
             <div class="table-responsive text-center">
                 <table class="table table-bordered align-middle border-dark">
@@ -112,7 +124,15 @@
 
                     $limitStart = ($page - 1) * $limit;
 
-                    $SqlQuery = mysqli_query($kon, "SELECT * FROM data LIMIT " . $limitStart . "," . $limit);
+                    if (isset($_GET['cari'])) {
+
+                        $cari = $_GET['cari'];
+
+                        $SqlQuery = mysqli_query($kon, "SELECT * FROM data WHERE nama LIKE '%" . $cari . "%'");
+                    } else {
+
+                        $SqlQuery = mysqli_query($kon, "SELECT * FROM data LIMIT " . $limitStart . "," . $limit);
+                    }
 
                     $i = $limitStart + 0;
 

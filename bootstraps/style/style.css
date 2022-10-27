@@ -4,12 +4,6 @@
   color: white;
 }
 
-body{
-  /* background-image: url('../../gambar/nia-kuil.jpg'); */
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
 #head {
  padding: 15px;
  background-color: black;

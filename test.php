@@ -76,7 +76,6 @@
     echo wordwrap($str, 15, "<br>\n");
     ?>
 
-
 </body>
 
 </html>
