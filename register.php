@@ -13,19 +13,18 @@
     <script src="bootstraps/js/jquery-3.6.0.min.js" type="text/javascript"></script>
     <link rel="stylesheet" href="bootstraps/style/style.css" type="text/css" />
     <link rel="shortcut icon" href="gambar/logophp.png">
-    <!-- <meta http-equiv="refresh" content="10" /> -->
-    <script src="https://kit.fontawesome.com/d0157de78d.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="fontawesome/css/all.min.css" type="text/css">
 </head>
 
 <body>
 
-    <div id="head" class="text-bg-dark">
+    <div id="head" class="container-fluid">
         <div class="text-center">
             <h1>Form Register</h1>
         </div>
     </div>
 
-    <div id="body" class="container">
+    <div id="body" class="container-fluid">
 
         <?php
 
@@ -68,43 +67,41 @@
         }
         ?>
 
-        <form action="" method="post" class="container form-floating" enctype="multipart/form-data">
-            <div class="control-group after-add-more">
-                <div class="mb-3">
-                    <label>Nama</label>
-                    <input type="text" class="form-control" name="username" placeholder="Nama lengkap" required pattern="[a-zA-Z\s]{1,50}" oninvalid="this.setCustomValidity('Masukan Nama lengkap dengan benar')" oninput="setCustomValidity('')">
+        <div class="card container shadow-lg rounded position-absolute top-50 start-50 translate-middle mt-3" style="height: autopx; width: 400px;">
+            <form action="" method="post" class="form-floating" enctype="multipart/form-data">
+                <div class="control-group after-add-more">
+                    <div class="mb-3 mt-3">
+                        <label>Masukan Nama</label>
+                        <input type="text" class="form-control" name="username" placeholder="Nama lengkap" required pattern="[a-zA-Z\s]{1,50}" oninvalid="this.setCustomValidity('Masukan Nama lengkap dengan benar')" oninput="setCustomValidity('')">
+                    </div>
+                    <div class="mb-3">
+                        <label>Masukan Email</label>
+                        <input type="email" class="form-control" name="email" placeholder="Email@gmail.com" required pattern="[A-z0-9._%+-]+@[gmail]+\.[com]{2,4}$" oninvalid="this.setCustomValidity('Masukan Alamat email dengan benar')" oninput="setCustomValidity('')">
+                    </div>
+                    <div class="mb-3">
+                        <label>Masukan Kata sandi</label>
+                        <input type="password" class="form-control" name="password" placeholder="Kata sandi" required oninvalid="this.setCustomValidity('Masukan Kata sandi dengan benar')" oninput="setCustomValidity('')" min="10">
+                    </div>
+                    <div class="mb-3">
+                        <label>Konfirmasi Kata sandi</label>
+                        <input type="password" class="form-control" name="cpassword" placeholder="Kata sandi" required oninvalid="this.setCustomValidity('Masukan kata sandi dengan benar')" oninput="setCustomValidity('')">
+                    </div>
                 </div>
-                <div class="mb-3">
-                    <label>Email</label>
-                    <input type="email" class="form-control" name="email" placeholder="Email@gmail.com" required pattern="[A-z0-9._%+-]+@[gmail]+\.[com]{2,4}$" oninvalid="this.setCustomValidity('Masukan Alamat email dengan benar')" oninput="setCustomValidity('')">
-                </div>
-                <div class="mb-3">
-                    <label>Password</label>
-                    <input type="password" class="form-control" name="password" placeholder="Password" required oninvalid="this.setCustomValidity('Masukan Password dengan benar')" oninput="setCustomValidity('')" min="10">
-                </div>
-                <div class="mb-3">
-                    <label>Komfirmasi Password</label>
-                    <input type="password" class="form-control" name="cpassword" placeholder="Password" required oninvalid="this.setCustomValidity('Masukan Password dengan benar')" oninput="setCustomValidity('')">
-                </div>
-                <hr>
-            </div>
-            <div class="row">
-                <div class="col-auto">
+                <div class="d-grid">
                     <button type="submit" name="register" class="btn btn-primary"><i class="fa-solid fa-user-pen"></i> Daftar</button>
                 </div>
-                <div class="col d-flex align-item-center mt-2">
+                <hr>
+                <div class="text-center">
                     <p>Anda sudah punya akun? <a href="login.php">Masuk</a></p>
                 </div>
-            </div>
-        </form>
-    </div>
-
-    <div id="footer" class="text-bg-dark">
-        <div class="text-center">
-            <small>&copy; 2022 - <strong>maulana adji sentosa</strong></small>
+            </form>
         </div>
     </div>
 
 </body>
+
+<footer id="footer" class="container-fluid position-absolute bottom-0 start-50 translate-middle-x">
+    <small>&copy; 2022 - <strong>maulana adji sentosa</strong></small>
+</footer>
 
 </html>

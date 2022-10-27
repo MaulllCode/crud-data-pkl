@@ -13,13 +13,12 @@
     <script src="bootstraps/js/jquery-3.6.0.min.js" type="text/javascript"></script>
     <link rel="stylesheet" href="bootstraps/style/style.css" type="text/css" />
     <link rel="shortcut icon" href="gambar/logophp.png">
-    <!-- <meta http-equiv="refresh" content="10" /> -->
-    <script src="https://kit.fontawesome.com/d0157de78d.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="fontawesome/css/all.min.css" type="text/css">
 </head>
 
 <body>
 
-    <div id="head" class="text-bg-dark">
+    <div id="head" class="container-fluid">
         <div class="text-center">
             <h1>Form Upload Gambar</h1>
         </div>
@@ -80,12 +79,10 @@
         </form>
     </div>
 
-    <div id="footer" class="text-bg-dark">
-        <div class="text-center">
-            <small>&copy; 2022 - <strong>maulana adji sentosa</strong></small>
-        </div>
-    </div>
-
 </body>
+
+<footer id="footer" class="container-fluid position-absolute bottom-0 start-50 translate-middle-x">
+    <small>&copy; 2022 - <strong>maulana adji sentosa</strong></small>
+</footer>
 
 </html>

@@ -11,17 +11,14 @@
     <script src="bootstraps/js/bootstrap.bundle.min.js"></script>
     <script src="bootstraps/js/bootstrap.min.js"></script>
     <script src="bootstraps/js/jquery-3.6.0.min.js" type="text/javascript"></script>
-    <link rel="stylesheet" href="bootstraps/style/style.css" type="text/css" />
+    <link rel="stylesheet" href="bootstraps/style/style.css" type="text/css">
     <link rel="shortcut icon" href="gambar/logophp.png">
-    <!-- <meta http-equiv="refresh" content="10" /> -->
-    <script src="https://kit.fontawesome.com/d0157de78d.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="fontawesome/css/all.min.css" type="text/css">
 </head>
 
 <body>
 
-
-
-    <div id="head" class="text-bg-dark">
+    <div id="head" class="container-fluid">
         <div class="row">
             <div class="col justify-content-start">
                 <h1>Form Crud Data</h1>
@@ -45,19 +42,14 @@
         </div>
     </div>
 
-    <div id="body" class="">
+    <div id="body" class="container-fluid ">
 
         <?php
         include 'koneksi.php';
 
         if (isset($_SESSION['level'])) {
-            // jika level admin
-            if ($_SESSION['level'] == "admin") {
-            }
-            // jika kondisi level user maka akan diarahkan ke halaman lain
-            else if ($_SESSION['level'] == "user") {
+            if ($_SESSION['level'] == "user") {
                 header('location:home.php');
-                // echo "<script>alert('Anda tidak dapat mengakses halaman');window.location.href='home.php';</script>";
             }
         }
 
@@ -129,15 +121,15 @@
                         $i++;
 
                     ?>
-                        <tbody class="table-group-divider text-capitalize bg-white">
+                        <tbody class="table-group-divider">
                             <tr>
                                 <th><?php echo $i; ?></th>
-                                <td><?php echo $data['nama']; ?></td>
-                                <td><?php echo $data['alamat']; ?></td>
-                                <td><?php echo $data['email']; ?></td>
+                                <td><?php echo ucfirst($data['nama']); ?></td>
+                                <td><?php echo ucfirst($data['alamat']); ?></td>
+                                <td><?php echo ucfirst($data['email']); ?></td>
                                 <td><?php echo $data['no']; ?></td>
-                                <td><?php echo $data['kota']; ?></td>
-                                <td><?php echo $data['jk']; ?></td>
+                                <td><?php echo ucfirst($data['kota']); ?></td>
+                                <td><?php echo ucfirst($data['jk']); ?></td>
                                 <td> <img src="gambar/<?php echo $data['gambar'] ?>" width='100px' height='100px'></td>
                                 <td>
                                     <a href="ubah.php?id=<?= $data['id'] ?>" class="btn btn-warning"><i class="fa-solid fa-pencil"></i> Ubah</a>
@@ -223,12 +215,10 @@
         </form>
     </div>
 
-    <div id="footer" class="text-bg-dark">
-        <div class="text-center">
-            <small>&copy; 2022 - <strong>maulana adji sentosa</strong></small>
-        </div>
-    </div>
-
 </body>
+
+<footer id="footer" class="container-fluid">
+    <small>&copy; 2022 - <strong>maulana adji sentosa</strong></small>
+</footer>
 
 </html>

@@ -13,19 +13,18 @@
     <script src="bootstraps/js/jquery-3.6.0.min.js" type="text/javascript"></script>
     <link rel="stylesheet" href="bootstraps/style/style.css" type="text/css" />
     <link rel="shortcut icon" href="gambar/logophp.png">
-    <!-- <meta http-equiv="refresh" content="10" /> -->
-    <script src="https://kit.fontawesome.com/d0157de78d.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="fontawesome/css/all.min.css" type="text/css">
 </head>
 
 <body>
 
-    <div id="head" class="text-bg-dark">
+    <div id="head" class="container-fluid">
         <div class="text-center">
             <h1>Form Ubah Data</h1>
         </div>
     </div>
 
-    <div id="body" class="container">
+    <div id="body" class="container-fluid">
 
         <?php
 
@@ -157,7 +156,7 @@
 
         ?>
 
-        <form action="" method="post" class="form-floating" enctype="multipart/form-data">
+        <form action="" method="post" class="container form-floating" enctype="multipart/form-data">
             <div class="mb-3">
                 <label>Nama</label>
                 <input type="text" value="<?php echo htmlspecialchars($data['nama'], ENT_QUOTES); ?>" class="form-control" name="nama" placeholder="Nama lengkap" required pattern="[a-zA-Z\s]{1,50}" oninvalid="this.setCustomValidity('Masukan Nama lengkap dengan benar')" oninput="setCustomValidity('')">
@@ -218,12 +217,10 @@
         </form>
     </div>
 
-    <div id="footer" class="text-bg-dark">
-        <div class="text-center">
-            <small>&copy; 2022 - <strong>maulana adji sentosa</strong></small>
-        </div>
-    </div>
-
 </body>
+
+<footer id="footer" class="container-fluid">
+    <small>&copy; 2022 - <strong>maulana adji sentosa</strong></small>
+</footer>
 
 </html>
