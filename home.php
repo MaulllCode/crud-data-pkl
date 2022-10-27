@@ -46,8 +46,8 @@
     <div id="body" class="container-fluid">
 
         <form class="container d-flex mb-3" role="search">
-            <input class="form-control me-2" name="cari" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-success" type="submit">Search</button>
+            <input class="form-control me-2" name="cari" type="search" placeholder="Pencarian" aria-label="Search">
+            <button class="btn btn-success" type="submit">Cari</button>
         </form>
 
         <?php
@@ -89,7 +89,6 @@
 
                         $SqlQuery = mysqli_query($kon, "SELECT * FROM data WHERE nama LIKE '%" . $cari . "%'");
                     } else {
-
                         $SqlQuery = mysqli_query($kon, "SELECT * FROM data LIMIT " . $limitStart . "," . $limit);
                     }
 
