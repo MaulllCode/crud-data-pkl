@@ -153,57 +153,59 @@
 
         ?>
 
-        <form action="" method="post" class="form-floating container" enctype="multipart/form-data">
-            <div class="control-group after-add-more">
-                <div class="mb-3">
-                    <label>Nama</label>
-                    <input type="text" class="form-control" name="nama[]" placeholder="Nama lengkap" pattern="[a-zA-Z\s]{1,50}" oninvalid="this.setCustomValidity('Masukan Nama lengkap dengan benar')" oninput="setCustomValidity('')" required>
+        <div class="card container shadow-lg">
+            <form action="" method="post" class="form-floating" enctype="multipart/form-data">
+                <div class="control-group after-add-more">
+                    <div class="mb-3 mt-3">
+                        <label>Nama</label>
+                        <input type="text" class="form-control" name="nama[]" placeholder="Nama lengkap" pattern="[a-zA-Z\s]{1,50}" oninvalid="this.setCustomValidity('Masukan Nama lengkap dengan benar')" oninput="setCustomValidity('')" required>
+                    </div>
+                    <div class="mb-3">
+                        <label>Alamat</label>
+                        <input type="text" class="form-control" name="alamat[]" placeholder="Alamat domisili" required pattern="[a-zA-Z0-9\s]{1,50}" oninvalid="this.setCustomValidity('Masukan Alamat domisili dengan benar')" oninput="setCustomValidity('')">
+                    </div>
+                    <div class="mb-3">
+                        <label>Email</label>
+                        <input type="email" class="form-control" name="email[]" placeholder="Email@gmail.com" required pattern="[A-z0-9._%+-]+@[gmail]+\.[com]{2,4}$" oninvalid="this.setCustomValidity('Masukan Alamat email dengan benar')" oninput="setCustomValidity('')">
+                    </div>
+                    <div class="mb-3">
+                        <label>No Telp</label>
+                        <input type="tel" pattern="\d{10,15}" class="form-control" name="no[]" placeholder="08XXXXXXXXX" required oninvalid="this.setCustomValidity('Masukan No telp dengan benar')" oninput="setCustomValidity('')">
+                    </div>
+                    <div class="mb-3">
+                        <label>Kota</label>
+                        <select class="form-control" name="kota[]" required oninvalid="this.setCustomValidity('Pilih Kota dengan benar')" oninput="setCustomValidity('')">
+                            <option value="">-- Pilihan Kota --</option>
+                            <?php
+                            sort($array_kota);
+                            foreach ($array_kota as $kota) {
+                                echo "<option value='$kota'>$kota</option>";
+                            }
+                            ?>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label>Jenis Kelamin</label>
+                        <select class="form-control" name="jk[]" required oninvalid="this.setCustomValidity('Pilih Jenis kelamin dengan benar')" oninput="setCustomValidity('')">
+                            <option value>-- Pilihan Jenis Kelamin --</option>
+                            <option value="laki-laki">Laki-laki</option>
+                            <option value="perempuan">Perempuan</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label>Foto</label>
+                        <input class="form-control" type='file' name="file_gambar[]" required oninvalid="this.setCustomValidity('Masukan File foto dengan benar')" oninput="setCustomValidity('')" />
+                        <p style="color: red">Pastikan menggunakan File Foto</p>
+                    </div>
+                    <hr>
                 </div>
                 <div class="mb-3">
-                    <label>Alamat</label>
-                    <input type="text" class="form-control" name="alamat[]" placeholder="Alamat domisili" required pattern="[a-zA-Z0-9\s]{1,50}" oninvalid="this.setCustomValidity('Masukan Alamat domisili dengan benar')" oninput="setCustomValidity('')">
+                    <button type="submit" name="tambah_data" class="btn btn-primary"><i class="fa-solid fa-circle-plus"></i> Tambahkan Data</button>
+                    <button class="btn btn-info tambah-form" type="button"><i class="fa-solid fa-circle-plus"></i> Tambah Form Data</button>
+                    <a class="btn btn-success" href="index.php" role="button"><i class="fa-solid fa-backward-step"></i> Kembali</a>
                 </div>
-                <div class="mb-3">
-                    <label>Email</label>
-                    <input type="email" class="form-control" name="email[]" placeholder="Email@gmail.com" required pattern="[A-z0-9._%+-]+@[gmail]+\.[com]{2,4}$" oninvalid="this.setCustomValidity('Masukan Alamat email dengan benar')" oninput="setCustomValidity('')">
-                </div>
-                <div class="mb-3">
-                    <label>No Telp</label>
-                    <input type="tel" pattern="\d{10,15}" class="form-control" name="no[]" placeholder="08XXXXXXXXX" required oninvalid="this.setCustomValidity('Masukan No telp dengan benar')" oninput="setCustomValidity('')">
-                </div>
-                <div class="mb-3">
-                    <label>Kota</label>
-                    <select class="form-control" name="kota[]" required oninvalid="this.setCustomValidity('Pilih Kota dengan benar')" oninput="setCustomValidity('')">
-                        <option value="">-- Pilihan Kota --</option>
-                        <?php
-                        sort($array_kota);
-                        foreach ($array_kota as $kota) {
-                            echo "<option value='$kota'>$kota</option>";
-                        }
-                        ?>
-                    </select>
-                </div>
-                <div class="mb-3">
-                    <label>Jenis Kelamin</label>
-                    <select class="form-control" name="jk[]" required oninvalid="this.setCustomValidity('Pilih Jenis kelamin dengan benar')" oninput="setCustomValidity('')">
-                        <option value>-- Pilihan Jenis Kelamin --</option>
-                        <option value="laki-laki">Laki-laki</option>
-                        <option value="perempuan">Perempuan</option>
-                    </select>
-                </div>
-                <div class="mb-3">
-                    <label>Foto</label>
-                    <input class="form-control" type='file' name="file_gambar[]" required oninvalid="this.setCustomValidity('Masukan File foto dengan benar')" oninput="setCustomValidity('')" />
-                    <p style="color: red">Pastikan menggunakan File Foto</p>
-                </div>
-                <hr>
-            </div>
-            <div>
-                <button type="submit" name="tambah_data" class="btn btn-primary"><i class="fa-solid fa-circle-plus"></i> Tambahkan Data</button>
-                <button class="btn btn-info tambah-form" type="button"><i class="fa-solid fa-circle-plus"></i> Tambah Form Data</button>
-                <a class="btn btn-success" href="index.php" role="button"><i class="fa-solid fa-backward-step"></i> Kembali</a>
-            </div>
-        </form>
+            </form>
+        </div>
 
         <div class="control-group d-none copy">
             <div class="control-group">

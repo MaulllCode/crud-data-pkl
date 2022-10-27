@@ -156,65 +156,69 @@
 
         ?>
 
-        <form action="" method="post" class="container form-floating" enctype="multipart/form-data">
-            <div class="mb-3">
-                <label>Nama</label>
-                <input type="text" value="<?php echo htmlspecialchars($data['nama'], ENT_QUOTES); ?>" class="form-control" name="nama" placeholder="Nama lengkap" required pattern="[a-zA-Z\s]{1,50}" oninvalid="this.setCustomValidity('Masukan Nama lengkap dengan benar')" oninput="setCustomValidity('')">
-            </div>
-            <div class="mb-3">
-                <label>Alamat</label>
-                <input type="text" value="<?php echo htmlspecialchars($data['alamat'], ENT_QUOTES); ?>" class="form-control" name="alamat" placeholder="Alamat domisili" required pattern="[a-zA-Z0-9\s]{1,50}" oninvalid="this.setCustomValidity('Masukan Alamat domisili dengan benar')" oninput="setCustomValidity('')">
-            </div>
-            <div class="mb-3">
-                <label>Email</label>
-                <input type="email" value=" <?php echo htmlspecialchars($data['email'], ENT_QUOTES); ?>" class="form-control" name="email" placeholder="Email@gmail.com" required pattern="[A-z0-9._%+-]+@[gmail]+\.[com]{2,4}$" oninvalid="this.setCustomValidity('Masukan Alamat email dengan benar')" oninput="setCustomValidity('')">
-            </div>
-            <div class="mb-3">
-                <label>No Telp</label>
-                <input type="tel" pattern="\d{10,15}" value="<?php echo htmlspecialchars($data['no'], ENT_QUOTES); ?>" class="form-control" name="no" placeholder="08XXXXXXXXXX" required oninvalid="this.setCustomValidity('Masukan No telp dengan benar')" oninput="setCustomValidity('')">
-            </div>
-            <div class="mb-3">
-                <label>Kota</label>
-                <select class="form-select" name="kota" required oninvalid="this.setCustomValidity('Pilih Kota dengan benar')" oninput="setCustomValidity('')">
-                    <option value="<?php echo htmlspecialchars($data['kota'], ENT_QUOTES); ?>">-- Pilihan Kota --</option>
-                    <?php
-                    foreach ($array_kota as $kota) {
-                        if ($data['kota'] == $kota) {
-                            echo "<option value='$kota' selected>$kota</option>";
-                        } else {
-                            echo "<option value='$kota'>$kota</option>";
+        <div class="card container shadow-lg">
+            <form action="" method="post" class="form-floating" enctype="multipart/form-data">
+                <div class="mb-3 mt-3">
+                    <label>Nama</label>
+                    <input type="text" value="<?php echo htmlspecialchars($data['nama'], ENT_QUOTES); ?>" class="form-control" name="nama" placeholder="Nama lengkap" required pattern="[a-zA-Z\s]{1,50}" oninvalid="this.setCustomValidity('Masukan Nama lengkap dengan benar')" oninput="setCustomValidity('')">
+                </div>
+                <div class="mb-3">
+                    <label>Alamat</label>
+                    <input type="text" value="<?php echo htmlspecialchars($data['alamat'], ENT_QUOTES); ?>" class="form-control" name="alamat" placeholder="Alamat domisili" required pattern="[a-zA-Z0-9\s]{1,50}" oninvalid="this.setCustomValidity('Masukan Alamat domisili dengan benar')" oninput="setCustomValidity('')">
+                </div>
+                <div class="mb-3">
+                    <label>Email</label>
+                    <input type="email" value=" <?php echo htmlspecialchars($data['email'], ENT_QUOTES); ?>" class="form-control" name="email" placeholder="Email@gmail.com" required pattern="[A-z0-9._%+-]+@[gmail]+\.[com]{2,4}$" oninvalid="this.setCustomValidity('Masukan Alamat email dengan benar')" oninput="setCustomValidity('')">
+                </div>
+                <div class="mb-3">
+                    <label>No Telp</label>
+                    <input type="tel" pattern="\d{10,15}" value="<?php echo htmlspecialchars($data['no'], ENT_QUOTES); ?>" class="form-control" name="no" placeholder="08XXXXXXXXXX" required oninvalid="this.setCustomValidity('Masukan No telp dengan benar')" oninput="setCustomValidity('')">
+                </div>
+                <div class="mb-3">
+                    <label>Kota</label>
+                    <select class="form-select" name="kota" required oninvalid="this.setCustomValidity('Pilih Kota dengan benar')" oninput="setCustomValidity('')">
+                        <option value="<?php echo htmlspecialchars($data['kota'], ENT_QUOTES); ?>">-- Pilihan Kota --</option>
+                        <?php
+                        foreach ($array_kota as $kota) {
+                            if ($data['kota'] == $kota) {
+                                echo "<option value='$kota' selected>$kota</option>";
+                            } else {
+                                echo "<option value='$kota'>$kota</option>";
+                            }
                         }
-                    }
-                    ?>
-                </select>
-            </div>
-            <div class=" mb-3">
-                <label>Jenis Kelamin</label>
-                <select class="form-select" name="jk" required oninvalid="this.setCustomValidity('Pilih Jenis kelamin dengan benar')" oninput="setCustomValidity('')">
-                    <option value="<?php echo htmlspecialchars($data['jk'], ENT_QUOTES); ?>">-- Pilihan Jenis Kelamin --</option>
-                    <?php
-                    $array_jk = array('laki-laki', 'perempuan');
-                    foreach ($array_jk as $jk) {
-                        if ($data['jk'] == $jk) {
-                            echo "<option value='$jk' selected>$jk</option>";
-                        } else {
-                            echo "<option value='$jk'>$jk</option>";
+                        ?>
+                    </select>
+                </div>
+                <div class=" mb-3">
+                    <label>Jenis Kelamin</label>
+                    <select class="form-select" name="jk" required oninvalid="this.setCustomValidity('Pilih Jenis kelamin dengan benar')" oninput="setCustomValidity('')">
+                        <option value="<?php echo htmlspecialchars($data['jk'], ENT_QUOTES); ?>">-- Pilihan Jenis Kelamin --</option>
+                        <?php
+                        $array_jk = array('laki-laki', 'perempuan');
+                        foreach ($array_jk as $jk) {
+                            if ($data['jk'] == $jk) {
+                                echo "<option value='$jk' selected>$jk</option>";
+                            } else {
+                                echo "<option value='$jk'>$jk</option>";
+                            }
                         }
-                    }
-                    ?>
-                </select>
-            </div>
-            <div class=" mb-3">
-                <label>Foto</label> <br>
-                <img src="gambar/<?php echo htmlentities($data['gambar'], ENT_QUOTES); ?>" width="100px" height="100px"> <br> <br>
-                <input class="form-control" type="file" name="file_gambar" />
-                <p style="color: red">Pastikan menggunakan File Foto</p>
-            </div>
-            <hr>
-            <input type="hidden" name="id" value="<?php echo $data['id']; ?>">
-            <button type="submit" name="ubah_data" class="btn btn-primary"><i class="fa-solid fa-pencil"></i> Ubah Data</button>
-            <a class="btn btn-success" href="index.php" role="button"><i class="fa-solid fa-backward-step"></i> Kembali</a>
-        </form>
+                        ?>
+                    </select>
+                </div>
+                <div class=" mb-3">
+                    <label>Foto</label> <br>
+                    <img src="gambar/<?php echo htmlentities($data['gambar'], ENT_QUOTES); ?>" width="100px" height="100px"> <br> <br>
+                    <input class="form-control" type="file" name="file_gambar" />
+                    <p style="color: red">Pastikan menggunakan File Foto</p>
+                </div>
+                <hr>
+                <div class="mb-3">
+                    <input type="hidden" name="id" value="<?php echo $data['id']; ?>">
+                    <button type="submit" name="ubah_data" class="btn btn-primary"><i class="fa-solid fa-pencil"></i> Ubah Data</button>
+                    <a class="btn btn-success" href="index.php" role="button"><i class="fa-solid fa-backward-step"></i> Kembali</a>
+                </div>
+            </form>
+        </div>
     </div>
 
 </body>

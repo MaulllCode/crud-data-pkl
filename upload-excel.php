@@ -106,17 +106,19 @@
 
         ?>
 
-        <form method="POST" action="" enctype="multipart/form-data">
-            <div class="form-group container">
-                <label>Masukan File Excel</label>
-                <input type="file" name="import_file" class="form-control" required oninvalid="this.setCustomValidity('Pastikan menggunakan File Excel !')" oninput="setCustomValidity('')">
-                <p style="color: red">Pastikan menggunakan File Excel !</p>
-                <hr>
-                <button type="submit" name="save_excel_data" class="btn btn-primary"><i class="fa-solid fa-file-arrow-up"></i> Upload</button>
-                <a class="btn btn-info" href="excel/template.xls" role="button"><i class="fa-solid fa-file-arrow-down"></i> Download template</a>
-                <a class="btn btn-success" href="index.php" role="button"><i class="fa-solid fa-backward-step"></i> Kembali</a>
-            </div>
-        </form>
+        <div class="card container position-absolute top-50 start-50 translate-middle shadow-lg">
+            <form method="POST" action="" enctype="multipart/form-data">
+                <div class="form-group mt-3 mb-3">
+                    <label>Masukan File Excel</label>
+                    <input type="file" name="import_file" class="form-control" required oninvalid="this.setCustomValidity('Pastikan menggunakan File Excel !')" oninput="setCustomValidity('')">
+                    <p style="color: red">Pastikan menggunakan File Excel !</p>
+                    <hr>
+                    <button type="submit" name="save_excel_data" class="btn btn-primary"><i class="fa-solid fa-file-arrow-up"></i> Upload</button>
+                    <a class="btn btn-info" href="excel/template.xls" role="button"><i class="fa-solid fa-file-arrow-down"></i> Download template</a>
+                    <a class="btn btn-success" href="index.php" role="button"><i class="fa-solid fa-backward-step"></i> Kembali</a>
+                </div>
+            </form>
+        </div>
     </div>
 
 </body>
