@@ -5,12 +5,12 @@
 }
 
 body {
-  background-color: black;
+  /* background-color: black; */
   color: white;
 } 
 
 #head {
- padding: 15px;
+ padding: 5px;
  background-color: black;
  color: white;
 }

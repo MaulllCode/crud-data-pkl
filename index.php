@@ -18,29 +18,27 @@
 
 <body>
 
-    <div id="head" class="container-fluid">
-        <div class="row">
-            <div class="col justify-content-start">
+    <nav id="head" class="navbar navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
                 <h1>Form Crud Data</h1>
-            </div>
-            <div class="col d-flex align-items-center justify-content-end">
-                <?php
-                session_start();
-                if (!isset($_SESSION['login'])) {
-                ?>
-                    <a class="btn btn-primary" href="login.php">Masuk</a>
-                    <a class="d-none btn btn-danger" href="logout.php">Keluar</a>
-                <?php
-                } else {
-                ?>
-                    <a class="d-none btn btn-primary" href="login.php">Masuk</a>
-                    <a class="btn btn-danger" href="logout.php"><i class="fa-solid fa-right-from-bracket"></i> Keluar</a>
-                <?php
-                }
-                ?>
-            </div>
+            </a>
+            <?php
+            session_start();
+            if (!isset($_SESSION['login'])) {
+            ?>
+                <a class="btn btn-primary" href="login.php">Masuk</a>
+                <a class="d-none btn btn-danger" href="logout.php">Keluar</a>
+            <?php
+            } else {
+            ?>
+                <a class="d-none btn btn-primary" href="login.php">Masuk</a>
+                <a class="btn btn-danger" href="logout.php"><i class="fa-solid fa-right-from-bracket"></i> Keluar</a>
+            <?php
+            }
+            ?>
         </div>
-    </div>
+    </nav>
 
     <div id="body" class="container-fluid ">
 

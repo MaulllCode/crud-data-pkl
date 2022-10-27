@@ -18,7 +18,30 @@
 
 <body>
 
-    <div id="head" class="container-fluid">
+    <nav id="head" class="navbar navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="home.php">
+                <h1>Form Crud Data</h1>
+            </a>
+            <?php
+            session_start();
+            if (!isset($_SESSION['login'])) {
+            ?>
+                <div>
+                    <a class="btn btn-primary" href="login.php"><i class="fa-solid fa-right-to-bracket"></i> Masuk</a>
+                    <a class="btn btn-outline-primary" href="register.php"><i class="fa-solid fa-user-pen"></i> Daftar</a>
+                </div>
+            <?php
+            } else {
+            ?>
+                <a class="btn btn-danger" href="logout.php"><i class="fa-solid fa-right-from-bracket"></i> Keluar</a>
+            <?php
+            }
+            ?>
+        </div>
+    </nav>
+
+    <!-- <div id="head" class="container-fluid">
         <div class="row">
             <div class="col d-flex justify-content-start">
                 <h1>Form Crud Data</h1>
@@ -41,7 +64,7 @@
                 ?>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <div id="body" class="container-fluid">
 
