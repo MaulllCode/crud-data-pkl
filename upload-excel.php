@@ -51,7 +51,6 @@
         use PhpOffice\PhpSpreadsheet\Spreadsheet;
         use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
-
         if (isset($_POST['save_excel_data'])) {
 
             $filename = $_FILES['import_file']['name'];
@@ -102,12 +101,10 @@
                 echo "<script>alert('Pastikan menggunakan File Excel !');window.location.href='upload-excel.php';</script>";
             }
         }
-
-
         ?>
 
-        <div class="card container position-absolute top-50 start-50 translate-middle shadow-lg">
-            <form method="POST" action="" enctype="multipart/form-data">
+        <div id="form" class="card container shadow-lg position-absolute top-50 start-50 translate-middle">
+            <form method="POST" action="" class="form-floating" enctype="multipart/form-data">
                 <div class="form-group mt-3 mb-3">
                     <label>Masukan File Excel</label>
                     <input type="file" name="import_file" class="form-control" required oninvalid="this.setCustomValidity('Pastikan menggunakan File Excel !')" oninput="setCustomValidity('')">

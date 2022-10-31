@@ -20,7 +20,7 @@
 
     <nav id="head" class="navbar navbar-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="index.php">
                 <h1>Form Crud Data</h1>
             </a>
             <?php
@@ -82,9 +82,9 @@
 
         ?>
 
-        <form class="container d-flex mb-3" role="search">
-            <input class="form-control me-2" name="cari" type="search" placeholder="Pencarian" aria-label="Search" oninvalid="this.setCustomValidity('Masukan Nama pencarian dengan benar!')" oninput="setCustomValidity('')" required>
-            <button class="btn btn-success" type="submit">Cari</button>
+        <form class="container d-flex justify-content-end mb-3" role="search">
+            <input class="form-control me-2 shadow" name="cari" type="search" placeholder="Pencarian" aria-label="Search" oninvalid="this.setCustomValidity('Masukan Nama pencarian dengan benar!')" oninput="setCustomValidity('')" required>
+            <button class="btn btn-success" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
         </form>
 
         <?php

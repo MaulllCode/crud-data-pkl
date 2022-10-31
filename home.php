@@ -68,10 +68,10 @@
 
     <div id="body" class="container-fluid">
 
-        <form class="container d-flex mb-3" role="search">
+        <!-- <form class="container d-flex mb-3" role="search">
             <input class="form-control me-2" name="cari" type="search" placeholder="Pencarian" aria-label="Search" oninvalid="this.setCustomValidity('Masukan Nama pencarian dengan benar!')" oninput="setCustomValidity('')" required>
             <button class="btn btn-success" type="submit">Cari</button>
-        </form>
+        </form> -->
 
         <?php
         if (isset($_GET['cari'])) {

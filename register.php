@@ -67,7 +67,7 @@
         }
         ?>
 
-        <div class="card container shadow-lg rounded position-absolute top-50 start-50 translate-middle mt-3" style="height: autopx; width: 400px;">
+        <div class="card container shadow-lg rounded position-absolute top-50 start-50 translate-middle" style="height: autopx; width: 400px;">
             <form action="" method="post" class="form-floating" enctype="multipart/form-data">
                 <div class="control-group after-add-more">
                     <div class="mb-3 mt-3">
