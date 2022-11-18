@@ -148,13 +148,13 @@
                 if ($page <= 1) {
                 ?>
                     <!-- link Previous Page disable -->
-                    <li class="disabled"><a class="page-link" href="#">Previous</a></li>
+                    <li class="disabled"><a class="page-link" href="#">&laquo;</a></li>
                 <?php
                 } else {
                     $previous = ($page > 1) ? $page - 1 : 1;
                 ?>
                     <!-- link Previous Page -->
-                    <li><a class="page-link" href="home.php?page=<?php echo $previous; ?>">Previous</a></li>
+                    <li><a class="page-link" href="home.php?page=<?php echo $previous; ?>">Sebelumnya</a></li>
                 <?php
                 }
                 ?>
@@ -189,12 +189,12 @@
                     <?php
                     if ($page >= $jumlahPage) {
                     ?>
-                        <li class="disabled"><a class="page-link" href="#">Next</a></li>
+                        <li class="disabled"><a class="page-link" href="#">&raquo;</a></li>
                     <?php
                     } else {
                         $next = ($page < $jumlahPage) ? $page + 1 : $jumlahPage;
                     ?>
-                        <li><a class="page-link" href="home.php?page=<?php echo $next; ?>">Next</a></li>
+                        <li><a class="page-link" href="home.php?page=<?php echo $next; ?>">Selanjutnya</a></li>
                     <?php
                     }
                     ?>
