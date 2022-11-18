@@ -140,9 +140,9 @@
                 } else {
                     $sql2 = "INSERT INTO data VALUES nama = '$nama', alamat = '$alamat', email = '$email', no = '$no', kota = '$kota', jk = '$jk' =  WHERE id = $id";
 
-                    $result = mysqli_query($kon, $sql2);
+                    $result2 = mysqli_query($kon, $sql2);
 
-                    if ($result) {
+                    if ($result2) {
                         echo "<script>alert('Data berhasil ditambahkan');window.location.href='index.php';</script>";
                     } else {
                         echo "<script>alert('Data gagal ditambahkan');window.location.href='index.php';</script>";

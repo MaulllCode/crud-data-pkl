@@ -170,7 +170,7 @@
                     <button type="submit" name="hapus" class="btn btn-danger" onclick="return confirm('Yakin menghapus data?')"><i class="fa fa-trash"></i> Hapus Data</button>
                 </div>
 
-                <nav class=" col d-flex justify-content-end">
+                <nav class="col d-flex justify-content-end">
                     <ul class="pagination">
                         <?php
                         // Jika page = 1, maka previous disable
