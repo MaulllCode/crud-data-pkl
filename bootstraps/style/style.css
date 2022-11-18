@@ -1,0 +1,38 @@
+
+.dark-mode {
+  background-color: black;
+  color: white;
+}
+
+body {
+  /* background-color: black; */
+  color: white;
+} 
+
+#form {
+  background-color: white;
+}
+
+#head {
+ padding: 5px;
+ background-color: black;
+ color: white;
+}
+
+#body {
+  background-color: white;
+  color: black;
+  padding: 15px;
+}
+
+#footer {
+  padding: 15px;
+  text-align: center;
+  color: white;
+  text-transform: capitalize;
+  background-color: black;
+}
+
+.table {
+  background-color: white;
+}
