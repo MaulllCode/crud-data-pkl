@@ -11,7 +11,7 @@
     <script src="bootstraps/js/bootstrap.bundle.min.js"></script>
     <script src="bootstraps/js/bootstrap.min.js"></script>
     <script src="bootstraps/js/jquery-3.6.0.min.js" type="text/javascript"></script>
-    <link rel="stylesheet" href="bootstraps/style/style.css" type="text/css" />
+    <link rel="stylesheet" href="style.css" type="text/css" />
     <link rel="shortcut icon" href="gambar/logophp.png">
     <link rel="stylesheet" href="fontawesome/css/all.min.css" type="text/css">
 </head>

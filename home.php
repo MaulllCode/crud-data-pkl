@@ -11,7 +11,7 @@
     <script src="bootstraps/js/bootstrap.bundle.min.js"></script>
     <script src="bootstraps/js/bootstrap.min.js"></script>
     <script src="bootstraps/js/jquery-3.6.0.min.js" type="text/javascript"></script>
-    <link rel="stylesheet" href="bootstraps\style\style.css" />
+    <link rel="stylesheet" href="style.css" type="text/css">
     <link rel="shortcut icon" href="gambar/logophp.png">
     <link rel="stylesheet" href="fontawesome/css/all.min.css" type="text/css">
 </head>
@@ -41,37 +41,7 @@
         </div>
     </nav>
 
-    <!-- <div id="head" class="container-fluid">
-        <div class="row">
-            <div class="col d-flex justify-content-start">
-                <h1>Form Crud Data</h1>
-            </div>
-            <div class="col d-flex align-items-center justify-content-end">
-                <?php
-                session_start();
-                if (!isset($_SESSION['login'])) {
-                ?>
-                    <div>
-                        <a class="btn btn-primary" href="login.php"><i class="fa-solid fa-right-to-bracket"></i> Masuk</a>
-                        <a class="btn btn-outline-primary" href="register.php"><i class="fa-solid fa-user-pen"></i> Daftar</a>
-                    </div>
-                <?php
-                } else {
-                ?>
-                    <a class="btn btn-danger" href="logout.php"><i class="fa-solid fa-right-from-bracket"></i> Keluar</a>
-                <?php
-                }
-                ?>
-            </div>
-        </div>
-    </div> -->
-
     <div id="body" class="container-fluid">
-
-        <!-- <form class="container d-flex mb-3" role="search">
-            <input class="form-control me-2" name="cari" type="search" placeholder="Pencarian" aria-label="Search" oninvalid="this.setCustomValidity('Masukan Nama pencarian dengan benar!')" oninput="setCustomValidity('')" required>
-            <button class="btn btn-success" type="submit">Cari</button>
-        </form> -->
 
         <?php
         if (isset($_GET['cari'])) {

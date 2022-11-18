@@ -25,6 +25,10 @@ body {
   padding: 15px;
 }
 
+#head h1 {
+  font-weight: bold;
+}
+
 #footer {
   padding: 15px;
   text-align: center;
