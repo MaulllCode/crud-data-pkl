@@ -29,3 +29,7 @@ if (!$kon) {
 // }
 
 // mysqli_close($kon);
+
+
+//testing pembuatan apklikasi !
+// uji coba pebuatan crud data base 2022plplplp
